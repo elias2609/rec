@@ -2,6 +2,8 @@
   <div class="max-w-sm mx-auto mt-20 p-4 bg-white rounded shadow">
     <h2 class="text-xl mb-4">Admin Login</h2>
     <form @submit.prevent="onSubmit" class="space-y-3">
+      <input v-model="email" type="email" placeholder="Email"
+             class="w-full border px-3 py-2 rounded" />
       <input v-model="password" type="password" placeholder="Password"
              class="w-full border px-3 py-2 rounded" />
       <button class="w-full bg-blue-600 text-white py-2 rounded">
@@ -18,13 +20,12 @@ import { signIn } from '@/services/auth'
 export default {
   name: 'LoginView',
   data() {
-    return { password: '', error: '' }
+    return {email: '', password: '', error: '' }
   },
   methods: {
     async onSubmit() {
-      const email = 'elias.freites16@gmail.com'
       this.error = ''
-      const { error } = await signIn(email, this.password)
+      const { error } = await signIn(this.email, this.password)
       if (error) this.error = error.message
       else this.$router.push('/admin')
     }
