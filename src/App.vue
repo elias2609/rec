@@ -1,26 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="min-h-screen bg-gray-100">
+    <!-- Barra de navegación opcional -->
+    <nav class="bg-white shadow p-4 mb-6">
+      <router-link to="/" class="mr-4 text-blue-600 hover:underline">
+        Público
+      </router-link>
+      <router-link to="/admin" class="text-blue-600 hover:underline">
+        Admin
+      </router-link>
+    </nav>
+
+    <!-- Aquí se renderizará Login.vue, Public.vue o Admin.vue según la ruta -->
+    <router-view />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  name: 'App'
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
