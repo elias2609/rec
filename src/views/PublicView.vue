@@ -27,14 +27,14 @@
             Hoy necesitamos de ti.
           </p>
           <p>
-           Cualquier aporte, por pequeño que parezca, será un paso enorme para acercarnos al milagro de verlo sano. Y
-          si no puedes donar, por favor ayúdanos compartiendo esta campaña para que llegue a más corazones solidarios. 
+            Cualquier aporte, por pequeño que parezca, será un paso enorme para acercarnos al milagro de verlo sano. Y
+            si no puedes donar, por favor ayúdanos compartiendo esta campaña para que llegue a más corazones solidarios.
           </p>
           <p>
-          De antemano, gracias infinitas por tu apoyo, tus oraciones y por acompañarnos en este camino tan duro.
+            De antemano, gracias infinitas por tu apoyo, tus oraciones y por acompañarnos en este camino tan duro.
           </p>
           <p>
-          Con tu ayuda, podemos darle a mi papá la oportunidad de seguir viviendo.
+            Con tu ayuda, podemos darle a mi papá la oportunidad de seguir viviendo.
           </p>
         </template>
 
@@ -80,6 +80,73 @@
           Notificar donación por WhatsApp
         </a>
       </div>
+      <!-- 9. Bloque para compartir campaña -->
+<section class="mt-12 text-center">
+  <!-- Título mejorado -->
+  <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-2">
+    📣 Comparte esta campaña
+  </h2>
+  <p class="text-gray-600 text-base sm:text-lg mb-6">
+    Ayúdanos a que más corazones solidarios se unan
+  </p>
+
+  <div class="flex justify-center space-x-4">
+    <!-- WhatsApp -->
+    <share-network
+      network="whatsapp"
+      :url="pageUrl"
+      title="Hola, estoy apoyando esta recaudación de fondos…"
+      description="¡Cada granito de arena cuenta!"
+      v-slot="{ share }"
+    >
+      <button
+        @click="share"
+        class="flex items-center bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition"
+      >
+        <font-awesome-icon :icon="['fab', 'whatsapp']" class="mr-2 text-xl" />
+        WhatsApp
+      </button>
+    </share-network>
+
+    <!-- Facebook -->
+    <share-network
+      network="facebook"
+      :url="pageUrl"
+      title="Hola, estoy apoyando esta recaudación de fondos…"
+      description="¡Cada granito de arena cuenta!"
+      v-slot="{ share }"
+    >
+      <button
+        @click="share"
+        class="flex items-center bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition"
+      >
+        <font-awesome-icon :icon="['fab', 'facebook-f']" class="mr-2 text-xl" />
+        Facebook
+      </button>
+    </share-network>
+
+    <!-- Telegram -->
+    <share-network
+      network="telegram"
+      :url="pageUrl"
+      title="Hola, estoy apoyando esta recaudación de fondos…"
+      description="¡Cada granito de arena cuenta!"
+      v-slot="{ share }"
+    >
+      <button
+        @click="share"
+        class="flex items-center bg-[#0088CC] text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition"
+      >
+        <font-awesome-icon :icon="['fab', 'telegram']" class="mr-2 text-xl" />
+        Telegram
+      </button>
+    </share-network>
+  </div>
+</section>
+
+
+
+
     </article>
   </div>
 </template>
@@ -95,7 +162,7 @@ export default {
   data() {
     return {
       showAll: false,
-
+      pageUrl: window.location.href,
       // Donaciones crudas y estructuras para scroll infinito
       donations: [],
       donorsSummary: [],
@@ -121,6 +188,9 @@ export default {
         (sum, { amount }) => sum + parseFloat(amount),
         0
       )
+    },
+    telegramBg() {
+      return 'bg-[#0088CC] hover:bg-opacity-90'
     },
 
     // Lista completa ordenada por monto descendente
@@ -196,6 +266,32 @@ export default {
 
     toggleFullList() {
       this.fullListVisible = !this.fullListVisible
+    },
+    async shareCampaign() {
+      const url = window.location.href
+      const title = 'Ayudemos a Alexi a seguir latiendo'
+      const text =
+        'Únete a la campaña para apoyar a Alexi. ¡Cada aporte cuenta!'
+
+      // Web Share API
+      if (navigator.share) {
+        try {
+          await navigator.share({ title, text, url })
+        } catch (err) {
+          // el usuario canceló o falló el share
+          console.warn('Share canceled or failed:', err)
+        }
+        return
+      }
+
+      // Fallback: copiar al portapapeles
+      try {
+        await navigator.clipboard.writeText(url)
+        // Limpia el mensaje en 3s
+      } catch (err) {
+        console.error('Error copiando al portapapeles:', err)
+      }
+
     }
   }
 }
