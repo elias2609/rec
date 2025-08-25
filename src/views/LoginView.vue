@@ -20,12 +20,13 @@ import { signIn } from '@/services/auth'
 export default {
   name: 'LoginView',
   data() {
-    return {email: '', password: '', error: '' }
+    return { password: '', error: '' }
   },
   methods: {
     async onSubmit() {
       this.error = ''
-      const { error } = await signIn(this.email, this.password)
+      const email = 'elias.freites16@gmail.com'
+      const { error } = await signIn(email, this.password)
       if (error) this.error = error.message
       else this.$router.push('/admin')
     }
