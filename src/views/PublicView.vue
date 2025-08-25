@@ -2,8 +2,8 @@
   <div class="bg-white rounded-lg shadow-sm p-6 mx-auto max-w-3xl space-y-8">
     <article class="w-full max-w-prose mx-auto space-y-6">
       <!-- 1. Título e imagen -->
-      <h1 class="text-3xl sm:text-4xl font-bold text-center text-primary">
-        Ayudemos a Alexi a seguir latiendo
+      <h1 class="text-3xl sm:text-4xl font-bold text-center text-primary flex items-center justify-center">
+        Ayudemos a Alexi a seguir latiendo ❤️
       </h1>
       <img src="@/assets/imagen.jpg" alt="Imagen del caso" class="w-full h-48 sm:h-64 object-cover rounded-lg" />
       <!-- 2. Texto explicativo con toggle -->
