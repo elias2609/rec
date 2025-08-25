@@ -1,29 +1,62 @@
 <template>
-  <div class="bg-white rounded-lg shadow-sm p-6 mx-auto max-w-3xl space-y-8">
+  <div
+    class="bg-white rounded-lg shadow-sm p-6 mx-auto max-w-3xl space-y-8 px-4 sm:px-0"
+  >
     <article class="w-full max-w-prose mx-auto space-y-6">
-      <!-- Header con contador -->
-      <div class="flex justify-center items-center">
-        <div>
-          <h1 class="text-2xl font-bold">Panel de Donaciones</h1>
-        </div>
-      </div>
+
+      <!-- Header con título centrado -->
+      <header class="text-center">
+        <h1 class="text-2xl sm:text-3xl font-bold">Panel de Donaciones</h1>
+      </header>
+
+      <!-- Total recaudado -->
       <section class="w-full text-center space-y-3">
-        <h2 class="text-xl font-medium">Total recaudado</h2>
-        <AmountCounter :amount="totalCollected" :duration="1500" class="mt-2" />
+        <h2 class="text-xl sm:text-2xl font-medium">Total recaudado</h2>
+        <AmountCounter
+          :amount="totalCollected"
+          :duration="1500"
+          class="mt-2"
+        />
       </section>
 
-      <!-- Formulario -->
-      <form @submit.prevent="addDonation" class="flex space-x-2">
-        <input v-model="donor" placeholder="Donante" class="flex-1 border px-3 py-2 rounded" />
-        <input v-model.number="amount" placeholder="Monto $" class="w-24 border px-3 py-2 rounded" />
-        <button class="bg-green-600 text-white px-4 rounded">Agregar</button>
+      <!-- Formulario: columna en móvil, fila en sm+ -->
+      <form
+        @submit.prevent="addDonation"
+        class="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0"
+      >
+        <input
+          v-model="donor"
+          placeholder="Donante"
+          class="w-full sm:flex-1 border px-3 py-2 rounded"
+        />
+        <input
+          v-model.number="amount"
+          placeholder="Monto $"
+          class="w-full sm:w-24 border px-3 py-2 rounded"
+        />
+        <button
+          type="submit"
+          class="w-full sm:w-auto bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+        >
+          Agregar
+        </button>
       </form>
 
-      <!-- Lista -->
+      <!-- Lista de donaciones -->
       <ul class="space-y-2">
-        <li v-for="d in donations" :key="d.id" class="flex justify-between items-center border px-4 py-2 rounded">
-          <span>{{ d.donor_name }} — ${{ d.amount }}</span>
-          <button @click="deleteDonation(d.id)" class="text-red-600 hover:underline">
+        <li
+          v-for="d in donations"
+          :key="d.id"
+          class="flex flex-col sm:flex-row justify-between items-start sm:items-center
+                 border px-4 py-2 rounded space-y-1 sm:space-y-0"
+        >
+          <span class="font-medium">
+            {{ d.donor_name }} — ${{ d.amount.toLocaleString() }}
+          </span>
+          <button
+            @click="deleteDonation(d.id)"
+            class="self-end sm:self-auto text-red-600 hover:underline"
+          >
             Borrar
           </button>
         </li>
