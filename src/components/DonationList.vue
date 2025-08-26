@@ -16,7 +16,7 @@
       <div v-for="(d, i) in displayDonations" :key="i"
         class="flex justify-between items-center p-2 bg-white rounded border border-border">
         <span class="font-medium">{{ d.donor_name }}</span>
-        <span class="text-sm text-gray-600">${{ d.amount.toFixed(2) }}</span>
+        <span class="text-sm text-gray-600">{{ d.amount.toFixed(2) }}BsD</span>
       </div>
     </div>
 

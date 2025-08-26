@@ -3,24 +3,24 @@
     <article class="w-full max-w-prose mx-auto space-y-6">
       <!-- 1. Título e imagen -->
       <h1 class="text-3xl sm:text-4xl font-bold text-center text-primary flex items-center justify-center">
-        Ayudemos a Alexi a seguir latiendo ❤️
+        Ayudemos al ❤️ de Alexi a seguir latiendo. 
       </h1>
       <img src="@/assets/imagen.jpg" alt="Imagen del caso" class="w-full h-48 sm:h-64 object-cover rounded-lg" />
       <!-- 2. Texto explicativo con toggle -->
       <div class="space-y-4 text-gray-700 text-base sm:text-lg leading-relaxed">
         <p>
-          Hace poco nos dieron una noticia que nos cambió la vida: mi papá tiene
+          Hace poco nos dieron una noticia que nos cambió la vida: Alexi tiene
           una miocardiopatía dilatada y su corazón ya está muy débil. Los médicos
-          nos dijeron que la única manera de darle una nueva oportunidad es
+          informaron que la única manera de darle una nueva oportunidad es
           implantándole un marcapasos resincronizador.
         </p>
 
         <template v-if="showAll">
           <p>
             El costo del equipo y la cirugía es de 10.120 dólares, una cantidad que nuestra familia no puede cubrir
-            sola. El procedimiento es urgente y cada día que pasa se hace más difícil.</p>
+            sola. El procedimiento es URGENTE y cada día que pasa se hace más difícil.</p>
           <p>
-            Mi papá es un hombre lleno de vida, trabajador, luchador y sobre todo un padre amoroso. Sueña con seguir
+            Alexi es un hombre lleno de vida, trabajador, luchador y sobre todo un padre amoroso. Sueña con seguir
             viendo crecer a su familia y nosotros soñamos con tenerlo a nuestro lado por muchos años más.
           </p>
           <p>
@@ -34,7 +34,7 @@
             De antemano, gracias infinitas por tu apoyo, tus oraciones y por acompañarnos en este camino tan duro.
           </p>
           <p>
-            Con tu ayuda, podemos darle a mi papá la oportunidad de seguir viviendo.
+            Con tu ayuda, podemos darle a Alexi la oportunidad de seguir viviendo.
           </p>
         </template>
 
@@ -59,7 +59,7 @@
         <ul>
           <li v-for="d in fullList" :key="d.id" class="flex justify-between py-1 border-b">
             <span>{{ d.donor_name }}</span>
-            <span>${{ d.amount.toLocaleString() }}</span>
+            <span>{{ d.amount.toLocaleString() }}DsD</span>
           </li>
         </ul>
       </div>

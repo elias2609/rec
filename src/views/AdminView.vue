@@ -31,7 +31,7 @@
         />
         <input
           v-model.number="amount"
-          placeholder="Monto $"
+          placeholder="Monto BsD - Ej: 123.50"
           class="w-full sm:w-24 border px-3 py-2 rounded"
         />
         <button
@@ -51,7 +51,7 @@
                  border px-4 py-2 rounded space-y-1 sm:space-y-0"
         >
           <span class="font-medium">
-            {{ d.donor_name }} — ${{ d.amount.toLocaleString() }}
+            {{ d.donor_name }} — {{ d.amount.toLocaleString() }}BsD
           </span>
           <button
             @click="deleteDonation(d.id)"

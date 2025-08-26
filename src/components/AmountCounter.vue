@@ -3,7 +3,7 @@
     <span class="text-4xl sm:text-5xl font-bold">
       {{ displayValue.toLocaleString() }}
     </span>
-    <span class="text-xl text-gray-600"> $</span>
+    <span class="text-xl text-gray-600"> BsD</span>
   </div>
 </template>
 
@@ -35,7 +35,7 @@ export default {
       const step = (time) => {
         const elapsed = time - startTime
         const progress = Math.min(elapsed / props.duration, 1)
-        displayValue.value = Math.floor(from + change * progress)
+        displayValue.value = (from + change * progress)
         if (progress < 1) {
           requestAnimationFrame(step)
         }
