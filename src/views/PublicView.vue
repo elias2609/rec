@@ -95,7 +95,7 @@
         <div class="flex flex-col sm:flex-row items-center justify-center
              space-y-4 sm:space-y-0 sm:space-x-4">
           <!-- WhatsApp -->
-          <share-network network="whatsapp" :url="pageUrl" title="Hola, estoy apoyando esta recaudación de fondos…"
+          <share-network network="whatsapp" :url="pageUrl" title="Hola, estoy apoyando esta recaudación de fondos. Si puedes apoyala donando o compartiendo el enlace."
             description="¡Cada granito de arena cuenta!" v-slot="{ share }">
             <button @click="share" class="w-full sm:w-auto flex items-center justify-center
                  bg-green-500 text-white px-4 py-2 rounded-full
